@@ -1,19 +1,54 @@
-rosbuild_add_library(IMUDataUtils 
-                       UnknownIMUSample.cpp
-                       IMUCounterUtils.cpp
-                       DeviceParams.cpp
-                       StandardIMUHeader.cpp
-                       IIMUPayload.cpp
-                       SDTDefaultPre.cpp
-                       IMUHiGPayload.cpp
-                       SensorDataUtils.cpp
-                       SerialDeviceParams.cpp
-                       SDTDefault.cpp
-                       CommonUtils.cpp
-                       STDIMUSample.cpp
-                       IMUTempPayload.cpp
-                       SerialComm.cpp
-                       IMUUnknownPayload.cpp
-                       IMUMAGPayload.cpp
-)
+# add_library(
+#   IMUDataUtils 
+#   UnknownIMUSample.cpp
+#   IMUCounterUtils.cpp
+#   DeviceParams.cpp
+#   StandardIMUHeader.cpp
+#   IIMUPayload.cpp
+#   SDTDefaultPre.cpp
+#   IMUHiGPayload.cpp
+#   SensorDataUtils.cpp
+#   SerialDeviceParams.cpp
+#   SDTDefault.cpp
+#   CommonUtils.cpp
+#   STDIMUSample.cpp
+#   IMUTempPayload.cpp
+#   SerialComm.cpp
+#   IMUUnknownPayload.cpp
+#   IMUMAGPayload.cpp
+# )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###################### Fuerte 
+
+# rosbuild_add_library(IMUDataUtils 
+#                        UnknownIMUSample.cpp
+#                        IMUCounterUtils.cpp
+#                        DeviceParams.cpp
+#                        StandardIMUHeader.cpp
+#                        IIMUPayload.cpp
+#                        SDTDefaultPre.cpp
+#                        IMUHiGPayload.cpp
+#                        SensorDataUtils.cpp
+#                        SerialDeviceParams.cpp
+#                        SDTDefault.cpp
+#                        CommonUtils.cpp
+#                        STDIMUSample.cpp
+#                        IMUTempPayload.cpp
+#                        SerialComm.cpp
+#                        IMUUnknownPayload.cpp
+#                        IMUMAGPayload.cpp
+# )
 

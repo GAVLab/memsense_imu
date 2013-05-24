@@ -60,7 +60,7 @@
  */
 
 
-#include "imu_node_base.h"
+#include <nodes/imu_node_base.h>
 
 int main(int argc, char **argv)
 {

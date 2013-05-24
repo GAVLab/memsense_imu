@@ -67,7 +67,7 @@
 #include <memsense_imu/ImuMAG.h>
 #include <dynamic_reconfigure/server.h>
 #include <map>
-#include <memsense_imu/IMUDynParamsConfig.h>
+#include "memsense_imu/IMUDynParamsConfig.h"
 #include "IMUDataUtils/CommonUtils.h"
 #include "IMUSampler/IMUSampler.h"
 #include "imu_sample.h"
