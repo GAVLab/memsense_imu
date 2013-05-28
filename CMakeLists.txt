@@ -30,8 +30,8 @@ find_package(
 
 ## Generate messages in the 'msg' folder
 add_message_files(
-  FILES
-    ImuMAG.msg
+    FILES
+        ImuMAG.msg
 )
 
 ## Generate services in the 'srv' folder
@@ -50,6 +50,8 @@ generate_messages(
 #add dynamic reconfigure api
 generate_dynamic_reconfigure_options(
     cfg/DynParams.cfg
+    # cfg/cpp/memsense_imu/IMUDynParamsConfig.h
+
 )
 
 
@@ -63,10 +65,13 @@ generate_dynamic_reconfigure_options(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
     INCLUDE_DIRS
+        include
         include/IDC
         include/IMUDataUtils
         include/IMUSampler
         include/nodes
+        cfg/cpp/memsense_imu
+        cfg/cpp
     LIBRARIES
         memsense_imu
     CATKIN_DEPENDS 
@@ -85,8 +90,10 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
+## include dynamic_reconfigure header as well
 include_directories(include
   ${catkin_INCLUDE_DIRS}
+  cfg/cpp
 )
 
 ## Set some sources
@@ -96,9 +103,6 @@ set(BASE_SOURCES
 )
 
 ## Declare a cpp library
-# add_library(memsense_imu_ex
-#   src/${PROJECT_NAME}/memsense_imu_ex.cpp
-# )
 add_library(IMUDataUtils 
     src/IMUDataUtils/UnknownIMUSample.cpp
     src/IMUDataUtils/IMUCounterUtils.cpp
@@ -128,7 +132,6 @@ add_library(imu_nodelet
 
 
 ## Declare a cpp executable
-# add_executable(memsense_imu_ex_node src/memsense_imu_ex_node.cpp)
 add_executable(IDC
     src/IDC/AutoConfig.cpp
     include/IDC/AutoConfig.h
