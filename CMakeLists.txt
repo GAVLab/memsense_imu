@@ -51,7 +51,6 @@ generate_messages(
 generate_dynamic_reconfigure_options(
     cfg/DynParams.cfg
     # cfg/cpp/memsense_imu/IMUDynParamsConfig.h
-
 )
 
 
@@ -70,8 +69,6 @@ catkin_package(
         include/IMUDataUtils
         include/IMUSampler
         include/nodes
-        cfg/cpp/memsense_imu
-        cfg/cpp
     LIBRARIES
         memsense_imu
     CATKIN_DEPENDS 
@@ -100,6 +97,8 @@ include_directories(include
 set(BASE_SOURCES
     src/nodes/imu_node_base.cpp
     src/nodes/imu_filter.cpp
+    include/nodes/imu_filter.h
+    include/nodes/imu_node_base.h
 )
 
 ## Declare a cpp library
@@ -158,6 +157,9 @@ add_executable(imu_node
     ${BASE_SOURCES}
 )
 
+## Add cmake target dependencies of the executable/library
+## as an example, message headers may need to be generated before nodes
+# add_dependencies(memsense_imu_ex_node memsense_imu_ex_generate_messages_cpp)
 
 # make sure configure headers are build before node using them
 add_dependencies(imu_node
@@ -165,18 +167,27 @@ add_dependencies(imu_node
 ) 
 
 
-## Add cmake target dependencies of the executable/library
-## as an example, message headers may need to be generated before nodes
-# add_dependencies(memsense_imu_ex_node memsense_imu_ex_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
 # target_link_libraries(memsense_imu_ex_node
 #   ${catkin_LIBRARIES}
 # )
-target_link_libraries(IDC IMUDataUtils)
-target_link_libraries(IMUSampler IMUDataUtils)
-target_link_libraries(imu_node IMUSampler)
-target_link_libraries(imu_nodelet IMUSampler)
+target_link_libraries(IDC 
+    IMUDataUtils
+    ${catkin_LIBRARIES}
+)
+target_link_libraries(IMUSampler
+    IMUDataUtils
+    ${catkin_LIBRARIES}
+)
+target_link_libraries(imu_node
+    IMUSampler
+    ${catkin_LIBRARIES}
+)
+target_link_libraries(imu_nodelet
+    IMUSampler
+    ${catkin_LIBRARIES}
+)
 
 
 #############
@@ -277,13 +288,13 @@ target_link_libraries(imu_nodelet IMUSampler)
 # include(${dynamic_reconfigure_PACKAGE_PATH}/cmake/cfgbuild.cmake)
 # gencfg()
 
-#common commands for building c++ executables and libraries
-#rosbuild_add_library(${PROJECT_NAME} src/example.cpp)
-#target_link_libraries(${PROJECT_NAME} another_library)
-#rosbuild_add_boost_directories()
-#rosbuild_link_boost(${PROJECT_NAME} thread)
-#rosbuild_add_executable(example examples/example.cpp)
-#target_link_libraries(example ${PROJECT_NAME})
+# common commands for building c++ executables and libraries
+# rosbuild_add_library(${PROJECT_NAME} src/example.cpp)
+# target_link_libraries(${PROJECT_NAME} another_library)
+# rosbuild_add_boost_directories()
+# rosbuild_link_boost(${PROJECT_NAME} thread)
+# rosbuild_add_executable(example examples/example.cpp)
+# target_link_libraries(example ${PROJECT_NAME})
 
 # add_subdirectory(src/IMUDataUtils)
 # add_subdirectory(src/IMUSampler)
